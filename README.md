@@ -58,4 +58,5 @@ Spring web mvc provides support for Spring REST
 <li>c3p0(com.mchange)</li>
 <li>javax.servlet-api</li>
 <li>javax.servlet.jsp-api</li>
-<li>javax.xml.bind(jaxb-api)</li></ol>
+<li>javax.xml.bind(jaxb-api)</li>
+<li>javax.annotation-api ->for @PostConstruct and @PreDestroy</ol>
