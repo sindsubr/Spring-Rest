@@ -45,6 +45,7 @@ Spring web mvc provides support for Spring REST
 @PathVariable<br>
 @ExceptionHandler<br>
 @ControllerAdvice<br>
+@RequestBody<br>
 <br>
 
 <h3>pom.xml</h3>
