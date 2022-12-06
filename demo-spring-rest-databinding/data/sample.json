@@ -1,0 +1,11 @@
+{
+  "id" : 1,
+  "firstName" : "Sindu",
+  "lastName" : "sabi",
+  "active" : true,
+  "address":{
+  "city":"Chennai",
+  "country":"India"
+  },
+  "languages":["java","c","javascript"]
+}
