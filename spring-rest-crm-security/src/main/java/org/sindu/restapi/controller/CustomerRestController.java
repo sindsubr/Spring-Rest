@@ -36,9 +36,9 @@ public class CustomerRestController{
 		 return customerService.addCustomer(customer);
 	}
 	
-	@PutMapping("/customers/{customerId}")
-	public Customer updateCustomer(@RequestBody Customer customer,@PathVariable int customerId) {
-		return customerService.updateCustomer(customer,customerId);
+	@PutMapping("/customers")
+	public Customer updateCustomer(@RequestBody Customer customer) {
+		return customerService.updateCustomer(customer);
 	}
 	@DeleteMapping("/customers/{customerId}")
 	public void deleteCustomer(@PathVariable int customerId) {

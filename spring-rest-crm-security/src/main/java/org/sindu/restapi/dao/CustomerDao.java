@@ -9,7 +9,7 @@ public interface CustomerDao {
 	public List<Customer> getCustomers(); // GET Request
 	public Customer getCustomer(int customerId); // GET Request
 	public Customer addCustomer(Customer customer); //POST Request
-	public Customer updateCustomer(Customer customer,int customerId); //PUT Request
+	public Customer updateCustomer(Customer customer); //PUT Request
 	public void deleteCustomer(int customerId); //Delete Request
 
 }

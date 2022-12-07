@@ -44,12 +44,12 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public Customer updateCustomer(Customer customer, int customerId) {
+	public Customer updateCustomer(Customer customer) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Customer customerToUpdate = session.get(Customer.class, customerId);
+		Customer customerToUpdate = session.get(Customer.class, customer.getId());
 		if (customerToUpdate == null)
-			throw new CustomerNotFoundException("Customer Id not found..!! " + customerId);
+			throw new CustomerNotFoundException("Customer Id not found..!! " + customer.getId());
 		customerToUpdate.setFirstName(customer.getFirstName());
 		customerToUpdate.setLastName(customer.getLastName());
 		customerToUpdate.setEmail(customer.getEmail());
