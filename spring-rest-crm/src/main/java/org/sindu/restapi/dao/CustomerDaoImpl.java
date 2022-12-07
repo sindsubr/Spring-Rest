@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.sindu.restapi.entity.Customer;
+import org.sindu.restapi.restexceptionhandler.CustomerNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -26,14 +27,16 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public Customer getCustomer(int customerId) {
 		Session session = sessionFactory.openSession();
-		Customer customer = session.get(Customer.class, customerId);
+		Customer customer = null;
+		customer = session.get(Customer.class, customerId);
+		if (customer == null)
+			throw new CustomerNotFoundException("Customer Id not found..!! " + customerId);
 		return customer;
 	}
 
 	@Override
 	public Customer addCustomer(Customer customer) {
 		Session session = sessionFactory.openSession();
-//		customer.setId(0); //For adding new customer entity
 		session.beginTransaction();
 		session.persist(customer);
 		session.getTransaction().commit();
@@ -41,10 +44,16 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public Customer updateCustomer(Customer customer) {
+	public Customer updateCustomer(Customer customer, int customerId) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		session.merge(customer);
+		Customer customerToUpdate = session.get(Customer.class, customerId);
+		if (customerToUpdate == null)
+			throw new CustomerNotFoundException("Customer Id not found..!! " + customerId);
+		customerToUpdate.setFirstName(customer.getFirstName());
+		customerToUpdate.setLastName(customer.getLastName());
+		customerToUpdate.setEmail(customer.getEmail());
+		session.merge(customerToUpdate);
 		session.getTransaction().commit();
 		return customer;
 	}
@@ -53,7 +62,10 @@ public class CustomerDaoImpl implements CustomerDao {
 	public void deleteCustomer(int customerId) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		session.remove(session.get(Customer.class, customerId));
+		Customer customer = session.get(Customer.class, customerId);
+		if (customer == null)
+			throw new CustomerNotFoundException("Customer Id not found..!! " + customerId);
+		session.remove(customer);
 		session.getTransaction().commit();
 	}
 

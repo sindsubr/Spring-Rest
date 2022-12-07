@@ -36,8 +36,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Transactional
 	@Override
-	public Customer updateCustomer(Customer customer) {
-		return customerDao.updateCustomer(customer);
+	public Customer updateCustomer(Customer customer,int customerId) {
+		return customerDao.updateCustomer(customer,customerId);
 
 	}
 

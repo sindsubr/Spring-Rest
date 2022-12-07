@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class CustomerRestController {
+public class CustomerRestController{
 
 	@Autowired
 	CustomerService customerService;
@@ -37,8 +37,8 @@ public class CustomerRestController {
 	}
 	
 	@PutMapping("/customers/{customerId}")
-	public Customer updateCustomer(@RequestBody Customer customer) {
-		return customerService.updateCustomer(customer);
+	public Customer updateCustomer(@RequestBody Customer customer,@PathVariable int customerId) {
+		return customerService.updateCustomer(customer,customerId);
 	}
 	@DeleteMapping("/customers/{customerId}")
 	public void deleteCustomer(@PathVariable int customerId) {
