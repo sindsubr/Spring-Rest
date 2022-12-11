@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.client.RestTemplate;
 
 @Controller
 public class LoginController {
@@ -33,4 +34,13 @@ public class LoginController {
 		return "access-denied";
 	}
 
+	@GetMapping("/authCleaner")
+	public String authCleaner(Model model) {
+		RestTemplate restTemplate = customerServiceRestClientImpl.getRestTemplate();
+		restTemplate.getInterceptors().clear();
+		customerServiceRestClientImpl.setRestTemplate(restTemplate);
+		CustomUserDetails customUserDetails = new CustomUserDetails();
+		model.addAttribute("customUserDetails", customUserDetails);
+		return "login";
+	}
 }

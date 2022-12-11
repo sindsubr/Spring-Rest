@@ -14,8 +14,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -33,6 +32,17 @@ public class CustomerServiceRestClientImpl implements CustomerService {
 		this.customUserDetails = customUserDetails;
 	}
 
+	
+	public RestTemplate getRestTemplate() {
+		return restTemplate;
+	}
+
+
+	public void setRestTemplate(RestTemplate restTemplate) {
+		this.restTemplate = restTemplate;
+	}
+
+
 	@Autowired
 	public CustomerServiceRestClientImpl(RestTemplate restTemplate, @Value("${crm.rest.url}") String crmRestUrl,CustomUserDetails customUserDetails) {
 		super();
@@ -47,8 +57,9 @@ public class CustomerServiceRestClientImpl implements CustomerService {
 	public List<Customer> getCustomers() {
 		logger.info("in getCustomers(): Calling REST API " + crmRestUrl);
 		// make REST call
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		System.out.println("Auth in config:" + authentication);
+		this.restTemplate.getInterceptors().add(
+				new BasicAuthorizationInterceptor(customUserDetails.getUsername(), customUserDetails.getPassword()));
+		
 		HttpEntity<List<Customer>> httpEntity = new HttpEntity<List<Customer>>(
 				createHeaders(customUserDetails.getUsername(), customUserDetails.getPassword()));
 		ResponseEntity<List<Customer>> responseEntity = restTemplate.exchange(crmRestUrl, HttpMethod.GET, httpEntity,
@@ -89,7 +100,6 @@ public class CustomerServiceRestClientImpl implements CustomerService {
 	@Override
 	public void updateCustomer(Customer customer) {
 		logger.info("in updateCustomer(): Calling REST API " + crmRestUrl);
-//		restTemplate.postForEntity(crmRestUrl, customer, String.class);
 		restTemplate.put(crmRestUrl, customer);	
 		logger.info("in updateCustomer(): success");		
 	}

@@ -29,7 +29,8 @@ public class SpringRestClientSecurityCustomerConfiguration {
 		.and().formLogin().loginPage("/login")
 		.loginProcessingUrl("/authenticateTheUser").successForwardUrl("/getUserDetails")
 		.permitAll()
-		.and().exceptionHandling().accessDeniedPage("/access-denied");
+		.and().exceptionHandling().accessDeniedPage("/access-denied")
+		.and().logout().logoutSuccessUrl("/authCleaner").permitAll();
 		return http.build();
 	}
 	

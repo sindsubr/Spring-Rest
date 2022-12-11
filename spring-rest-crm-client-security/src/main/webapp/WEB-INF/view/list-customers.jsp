@@ -22,9 +22,9 @@
 Welcome 
 	<security:authentication property="principal.username"></security:authentication>
 	<security:authentication property="principal.authorities"></security:authentication>
-	<form:form action="${pageContext.request.contextPath}/logout">
+	<form:form action="${pageContext.request.contextPath}/logout" method="POST">
 		<button type="submit">Logout</button>
-	</form:form>
+	</form:form>`
 	<br>
 	<br>
 	<div id="wrapper">
