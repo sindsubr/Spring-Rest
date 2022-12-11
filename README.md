@@ -61,3 +61,9 @@ Spring web mvc provides support for Spring REST
 <li>javax.servlet.jsp-api</li>
 <li>javax.xml.bind(jaxb-api)</li>
 <li>javax.annotation-api ->for @PostConstruct and @PreDestroy</ol>
+
+<h3>Important Points To Remember:</h3>
+<ul> 
+<li>RestTemplate to connect from client api to rest api</li>
+<li>Basic Authorization enable to connect with security enabled rest api</li></ul> 
+
