@@ -67,7 +67,7 @@ Spring web mvc provides support for Spring REST
 <ul>
 <li><a href="https://github.com/sindsubr/Spring-Rest/tree/main/spring-rest-crm/src/main/java/org/sindu/restapi/restexceptionhandler">Rest Exception handler</a></li>
 <li><a href="https://github.com/sindsubr/Spring-Rest/blob/main/spring-rest-crm-security/src/main/java/org/sindu/restapi/config/SpringRestSecurityCustomerConfiguration.java" >Enabling Rest API security based on roles</a></li>
-<li><a hre="https://github.com/sindsubr/Spring-Rest/blob/main/spring-rest-crm-client/src/main/java/org/sindu/restapi/service/CustomerServiceRestClientImpl.java">Rest client api to connect/test Rest API</a></li>
+<li><a href="https://github.com/sindsubr/Spring-Rest/blob/main/spring-rest-crm-client/src/main/java/org/sindu/restapi/service/CustomerServiceRestClientImpl.java">Rest client api to connect/test Rest API</a></li>
 <li><a href="https://github.com/sindsubr/Spring-Rest/blob/main/spring-rest-crm-client-security/src/main/java/org/sindu/restapi/service/CustomerServiceRestClientImpl.java"> Rest client security api to connect/test security enabled Rest API</a> </li>
 </ul>
 
