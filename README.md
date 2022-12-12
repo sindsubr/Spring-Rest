@@ -62,8 +62,20 @@ Spring web mvc provides support for Spring REST
 <li>javax.xml.bind(jaxb-api)</li>
 <li>javax.annotation-api ->for @PostConstruct and @PreDestroy</ol>
 
+<h3>Links for Topics:<br>
+-----------------</h3>
+<ul>
+<li><a href="https://github.com/sindsubr/Spring-Rest/tree/main/spring-rest-crm/src/main/java/org/sindu/restapi/restexceptionhandler">Rest Exception handler</a></li>
+<li><a href="https://github.com/sindsubr/Spring-Rest/blob/main/spring-rest-crm-security/src/main/java/org/sindu/restapi/config/SpringRestSecurityCustomerConfiguration.java" >Enabling Rest API security based on roles</a></li>
+<li><a hre="https://github.com/sindsubr/Spring-Rest/blob/main/spring-rest-crm-client/src/main/java/org/sindu/restapi/service/CustomerServiceRestClientImpl.java">Rest client api to connect/test Rest API</a></li>
+<li><a href="https://github.com/sindsubr/Spring-Rest/blob/main/spring-rest-crm-client-security/src/main/java/org/sindu/restapi/service/CustomerServiceRestClientImpl.java"> Rest client security api to connect/test security enabled Rest API</a> </li>
+</ul>
+
 <h3>Important Points To Remember:</h3>
 <ul> 
 <li>RestTemplate to connect from client api to rest api</li>
-<li>Basic Authorization enable to connect with security enabled rest api</li></ul> 
+<li>Basic Authorization enable to connect with security enabled rest api</li>
+<li>Clear Auth list after successfull logout processing</li>
+https://github.com/sindsubr/Spring-Rest/blob/main/spring-rest-crm-client-security/src/main/java/org/sindu/restapi/controller/LoginController.java
+</ul> 
 
